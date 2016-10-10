@@ -4,6 +4,7 @@ import edu.sjsu.cohort6.db.DBClient;
 import edu.sjsu.cohort6.rest.EndpointUtils;
 import edu.sjsu.cohort6.rest.MoviesResource;
 import edu.sjsu.cohort6.rest.RecommendationsResource;
+import edu.sjsu.cohort6.spark.MovieRecommendation;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -68,6 +69,8 @@ public class MovieRecommenderService extends Application<MovieRecommenderService
 
         bootstrap.addCommand(new CreateUserCommand());
         bootstrap.addCommand(new ListUserCommand());*/
+
+        MovieRecommendation.initialize();
     }
 
 
