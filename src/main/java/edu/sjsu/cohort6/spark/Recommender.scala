@@ -1,5 +1,7 @@
 package edu.sjsu.cohort6.spark
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.evaluation.RegressionEvaluator
 import org.apache.spark.ml.recommendation.ALS
@@ -17,6 +19,7 @@ case class UserMovieRating(user_id: Int, movie_id: Int, rating: Double)
 
 object MovieRecommendation {
 
+
   /**
     * Run this main method to see the output of this quick example or copy the code into the spark shell
     *
@@ -24,6 +27,9 @@ object MovieRecommendation {
     * @throws Throwable if an operation fails
     */
   def main(args: Array[String]): Unit = {
+
+    val mapper = new ObjectMapper()
+    mapper.registerModule(DefaultScalaModule)
     // Turn off noisy logging
     Logger.getLogger("org").setLevel(Level.WARN)
 

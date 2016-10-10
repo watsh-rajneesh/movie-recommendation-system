@@ -112,16 +112,16 @@
   </dependencies>
   <properties>
     <scala-maven-plugin.version>3.2.1</scala-maven-plugin.version>
-    <scala-library.version>2.11.7</scala-library.version>
+    <scala-library.version>2.11.8</scala-library.version>
     <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
     <guice.version>4.0</guice.version>
     <spark-version>2.0.1</spark-version>
     <json-simple.version>1.1</json-simple.version>
     <dropwizard.version>1.0.2</dropwizard.version>
     <mongo-spark-connector_2.11.version>2.0.0-rc0</mongo-spark-connector_2.11.version>
-    <jackson-core.version>2.8.3</jackson-core.version>
     <morphia.version>1.0.1</morphia.version>
     <maven-compiler-plugin.jdk.version>1.8</maven-compiler-plugin.jdk.version>
+    <jackson.version>2.8.3</jackson.version>
     <testng.version>6.8.8</testng.version>
   </properties>
 </project>
