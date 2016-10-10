@@ -72,6 +72,9 @@ object MovieRecommendation {
     sc.stop()
   }
 
+  /**
+    * This method looks up the personal_ratings collection in the DB and uses that to compute the recommendations.
+    */
   def recommend: Unit = {
     // Combine the datasets
     val userRatings = MongoSpark.load(sc, readConfig.copy(collectionName = "personal_ratings")).toDF[UserMovieRating]
@@ -94,6 +97,10 @@ object MovieRecommendation {
     MongoSpark.save(userRecommendations.write.mode("overwrite"), writeConfig)
   }
 
+  /**
+    * Initializes the recommender system by creating trained and validated model with the available collaboration filtered
+    * dataset of user ratings for movies provided in movie_ratings collection of mongo db.
+    */
   def initialize: Unit = {
     mapper = new ObjectMapper()
     mapper.registerModule(DefaultScalaModule)
