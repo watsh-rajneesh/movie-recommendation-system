@@ -49,7 +49,8 @@ public class MoviesResource extends BaseResource<MovieRatings>{
             List<PersonalRatings> personalRatingsList = CommonUtils.convertJsonArrayToList(modelJson, PersonalRatings.class);
             personalRatingsDAO.deleteByQuery(personalRatingsDAO.createQuery()); // drop all entries
             personalRatingsDAO.add(personalRatingsList); // add new user ratings
-            MovieRecommendation.main(new String[]{});
+            //MovieRecommendation.main(new String[]{});
+            MovieRecommendation.recommend();
         } catch(Exception e) {
             log.log(Level.SEVERE, "Error in adding student", e);
             throw new BadRequestException(e);

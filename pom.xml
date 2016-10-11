@@ -18,25 +18,31 @@
         <scala-maven-plugin.version>3.2.1</scala-maven-plugin.version>
         <maven-compiler-plugin.jdk.version>1.8</maven-compiler-plugin.jdk.version>
         <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
-        <scala-library.version>2.11.7</scala-library.version>
-        <jackson-core.version>2.8.3</jackson-core.version>
+        <scala-library.version>2.11.8</scala-library.version>
+        <jackson.version>2.8.3</jackson.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson-core.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-core.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson-core.version}</version>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-scala_2.11 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-scala_2.11</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
