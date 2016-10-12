@@ -53,7 +53,7 @@ object MovieRecommendation {
     .setTrainRatio(0.8)
 
   /**
-    * Run this main method to see the output of this quick example or copy the code into the spark shell
+    * main method for testing in isolation - calls the initialize-> recommend -> close data processing pipeline.
     *
     * @param args takes an optional single argument for the connection string
     * @throws Throwable if an operation fails
@@ -67,6 +67,9 @@ object MovieRecommendation {
     close
   }
 
+  /**
+    * Close spark context.
+    */
   def close: Unit = {
     // Clean up
     sc.stop()

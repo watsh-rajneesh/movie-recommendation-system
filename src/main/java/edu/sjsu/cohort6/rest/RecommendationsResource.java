@@ -46,7 +46,7 @@ public class RecommendationsResource extends BaseResource<UserRecommendations>{
         /*
          * fetch all ids so null is passed, and no limit so get everything.
          */
-        return userRecommendationsDAO.fetchById(null, null);
+        return userRecommendationsDAO.fetchById(null, 10);
     }
 
     @Override

@@ -16,7 +16,7 @@ server:
   adminContextPath: /admin
   connector:
     type: http
-    port: 8080
+    port: 9090
 
 logging:
   level: INFO
