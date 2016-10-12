@@ -1,9 +1,6 @@
 package edu.sjsu.cohort6.rest;
 
-import edu.sjsu.cohort6.common.CommonUtils;
-import edu.sjsu.cohort6.common.MovieRatings;
-import edu.sjsu.cohort6.common.PersonalRatings;
-import edu.sjsu.cohort6.common.UserChoices;
+import edu.sjsu.cohort6.common.*;
 import edu.sjsu.cohort6.db.DBClient;
 import edu.sjsu.cohort6.rest.exception.BadRequestException;
 import edu.sjsu.cohort6.rest.exception.InternalErrorException;

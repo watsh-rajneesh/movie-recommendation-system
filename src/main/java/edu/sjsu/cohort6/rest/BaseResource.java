@@ -70,7 +70,7 @@ public abstract class BaseResource<T extends BaseModel> {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    abstract public List<T> list( @QueryParam("filter") String filter) throws InternalErrorException, UnsupportedEncodingException;
+    abstract public List<T> list(@QueryParam("filter") String filter) throws InternalErrorException, UnsupportedEncodingException;
 
 
     @GET

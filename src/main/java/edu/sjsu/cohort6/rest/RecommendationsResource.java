@@ -1,5 +1,7 @@
 package edu.sjsu.cohort6.rest;
 
+import edu.sjsu.cohort6.common.MovieRatings;
+import edu.sjsu.cohort6.common.Recommendation;
 import edu.sjsu.cohort6.common.UserRecommendations;
 import edu.sjsu.cohort6.db.DBClient;
 import edu.sjsu.cohort6.rest.exception.InternalErrorException;
@@ -12,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -20,7 +23,7 @@ import java.util.logging.Logger;
  */
 @Path("/recommendations")
 @Produces(MediaType.APPLICATION_JSON)
-public class RecommendationsResource extends BaseResource<UserRecommendations>{
+public class RecommendationsResource extends BaseResource<Recommendation>{
     private static final Logger log = Logger.getLogger(MoviesResource.class.getName());
 
     public RecommendationsResource(DBClient client) {
@@ -42,20 +45,39 @@ public class RecommendationsResource extends BaseResource<UserRecommendations>{
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UserRecommendations> list(@QueryParam("filter") String filter) throws InternalErrorException {
+    public List<Recommendation> list(@QueryParam("filter") String filter) throws InternalErrorException {
         /*
          * fetch all ids so null is passed, and no limit so get everything.
+         *
+         * TODO only returning 10 for now.
          */
-        return userRecommendationsDAO.fetchById(null, 10);
+        List<UserRecommendations> userRecommendationsList = userRecommendationsDAO.fetchById(null, 10);
+        List<Recommendation> recommendationList = new ArrayList<>();
+        if (userRecommendationsList != null) {
+
+
+            for (UserRecommendations ur : userRecommendationsList) {
+                List<MovieRatings> movieRatingsList = movieRatingsDAO.fetchById(new ArrayList<String>() {{
+                    add("" + ur.getMovieId());
+                }}, null);
+
+                if (movieRatingsList != null && !movieRatingsList.isEmpty()) {
+                    MovieRatings m = movieRatingsList.get(0);
+                    Recommendation r = new Recommendation(ur.getMovieId(), m.getTitle(), m.getGenre(), ur.getRating());
+                    recommendationList.add(r);
+                }
+            }
+        }
+        return recommendationList;
     }
 
     @Override
-    public UserRecommendations retrieve(@PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
+    public Recommendation retrieve(@PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
         return null;
     }
 
     @Override
-    public UserRecommendations update(@PathParam("id") String id, @Valid String entity) throws ResourceNotFoundException, InternalErrorException, IOException {
+    public Recommendation update(@PathParam("id") String id, @Valid String entity) throws ResourceNotFoundException, InternalErrorException, IOException {
         return null;
     }
 
