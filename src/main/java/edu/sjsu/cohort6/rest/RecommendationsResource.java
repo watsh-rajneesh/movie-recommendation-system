@@ -63,7 +63,7 @@ public class RecommendationsResource extends BaseResource<Recommendation>{
 
                 if (movieRatingsList != null && !movieRatingsList.isEmpty()) {
                     MovieRatings m = movieRatingsList.get(0);
-                    Recommendation r = new Recommendation(ur.getMovieId(), m.getTitle(), m.getGenre(), ur.getRating());
+                    Recommendation r = new Recommendation(ur.getMovieId(), m.getTitle(), m.getGenre(), m.getRating());
                     recommendationList.add(r);
                 }
             }
