@@ -35,6 +35,7 @@ public class MongoDBClient implements DBClient {
     private MovieRatingsDAO movieRatingsDAO;
     private PersonalRatingsDAO personalRatingsDAO;
     private UserRecommendationsDAO userRecommendationsDAO;
+    private LinksDAO linksDAO;
     private Morphia morphia = null;
     private MongoClient mongoClient;
     private Datastore morphiaDatastore;
@@ -62,6 +63,7 @@ public class MongoDBClient implements DBClient {
         movieRatingsDAO = new MovieRatingsDAO(mongoClient, morphia, dbName);
         personalRatingsDAO = new PersonalRatingsDAO(mongoClient, morphia, dbName);
         userRecommendationsDAO = new UserRecommendationsDAO(mongoClient, morphia, dbName);
+        linksDAO = new LinksDAO(mongoClient, morphia, dbName);
     }
 
     @Override
@@ -99,6 +101,8 @@ public class MongoDBClient implements DBClient {
                 return personalRatingsDAO;
             } else if (clazz.getTypeName().equalsIgnoreCase(UserRecommendationsDAO.class.getTypeName())) {
                 return userRecommendationsDAO;
+            } else if(clazz.getTypeName().equalsIgnoreCase(LinksDAO.class.getTypeName())) {
+                return linksDAO;
             }
         }
         return null;

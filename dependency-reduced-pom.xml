@@ -94,6 +94,12 @@
   </build>
   <dependencies>
     <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.10</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>6.8.8</version>
@@ -112,6 +118,7 @@
   </dependencies>
   <properties>
     <scala-maven-plugin.version>3.2.1</scala-maven-plugin.version>
+    <lombok.version>1.16.10</lombok.version>
     <scala-library.version>2.11.8</scala-library.version>
     <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
     <guice.version>4.0</guice.version>

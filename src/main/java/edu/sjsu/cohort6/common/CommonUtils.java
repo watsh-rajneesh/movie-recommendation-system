@@ -36,6 +36,7 @@ import java.util.logging.Logger;
 public class CommonUtils {
 
     private static final Logger log = Logger.getLogger(CommonUtils.class.getName());
+    public static final String MOVIES_API_FORAMT = "https://moviesapi.com/m.php?i={0}&type=movie&r=json";
     /**
      * Converts a JSON array of objects to List of Java Object types.
      * For example, convert a JSON array of students to List<Student>.
@@ -141,4 +142,6 @@ public class CommonUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("M-dd-yyyy HH:mm");
         return sdf.parse(dateInString);
     }
+
+
 }

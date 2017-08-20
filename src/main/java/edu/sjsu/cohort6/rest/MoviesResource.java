@@ -30,7 +30,7 @@ public class MoviesResource extends BaseResource<MovieRatings>{
 
     private static final Logger log = Logger.getLogger(MoviesResource.class.getName());
     /**
-     * Hard coded map of genre to movies. This is required because we dont have the user rate the movies on the client
+     * Hard coded map of genre to movies. This is required because we don't have the user rate the movies on the client
      * and instead require user to rate the genre. So on the server side we use the genre rating as the rating for the
      * movies of that genre (by looking up this map by the specified genre). For each genre we maintain 2 random movies
      * of that genre.

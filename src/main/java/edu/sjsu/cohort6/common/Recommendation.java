@@ -11,16 +11,27 @@ public class Recommendation extends BaseModel {
     private int rating;
     private String genre;
     private int movieId;
+    private int imdbid;
+    private MovieMetadata metadata;
+
+    public MovieMetadata getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(MovieMetadata metadata) {
+        this.metadata = metadata;
+    }
 
     public Recommendation() {
 
     }
 
-    public Recommendation(int movieId, String title, String genre, int rating) {
+    public Recommendation(int movieId, String title, String genre, int rating, int imdbid) {
         this.movieId = movieId;
         this.rating = rating;
         this.genre = genre;
         this.title = title;
+        this.imdbid = imdbid;
     }
 
     public String getTitle() {
@@ -51,6 +62,14 @@ public class Recommendation extends BaseModel {
         return movieId;
     }
 
+    public int getImdbid() {
+        return imdbid;
+    }
+
+    public void setImdbid(int imdbid) {
+        this.imdbid = imdbid;
+    }
+
     public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
@@ -62,6 +81,8 @@ public class Recommendation extends BaseModel {
                 ", rating=" + rating +
                 ", genre='" + genre + '\'' +
                 ", movieId=" + movieId +
+                ", imdbid=" + imdbid +
+                ", metadata=" + metadata +
                 '}';
     }
 }

@@ -16,6 +16,7 @@ package edu.sjsu.cohort6.rest;
 
 import edu.sjsu.cohort6.common.BaseModel;
 import edu.sjsu.cohort6.db.DBClient;
+import edu.sjsu.cohort6.db.mongodb.LinksDAO;
 import edu.sjsu.cohort6.db.mongodb.MovieRatingsDAO;
 import edu.sjsu.cohort6.db.mongodb.PersonalRatingsDAO;
 import edu.sjsu.cohort6.db.mongodb.UserRecommendationsDAO;
@@ -42,12 +43,14 @@ public abstract class BaseResource<T extends BaseModel> {
     protected MovieRatingsDAO movieRatingsDAO;
     protected PersonalRatingsDAO personalRatingsDAO;
     protected UserRecommendationsDAO userRecommendationsDAO;
+    protected LinksDAO linksDAO;
 
     public BaseResource(DBClient client) {
         this.dbClient = client;
         this.userRecommendationsDAO = (UserRecommendationsDAO) client.getDAO(UserRecommendationsDAO.class);
         this.movieRatingsDAO = (MovieRatingsDAO) client.getDAO(MovieRatingsDAO.class);
         this.personalRatingsDAO = (PersonalRatingsDAO) client.getDAO(PersonalRatingsDAO.class);
+        this.linksDAO = (LinksDAO) client.getDAO(LinksDAO.class);
     }
 
     /*

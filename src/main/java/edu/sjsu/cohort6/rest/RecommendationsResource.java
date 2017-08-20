@@ -1,5 +1,6 @@
 package edu.sjsu.cohort6.rest;
 
+import edu.sjsu.cohort6.common.Links;
 import edu.sjsu.cohort6.common.MovieRatings;
 import edu.sjsu.cohort6.common.Recommendation;
 import edu.sjsu.cohort6.common.UserRecommendations;
@@ -61,9 +62,22 @@ public class RecommendationsResource extends BaseResource<Recommendation>{
                     add("" + ur.getMovieId());
                 }}, null);
 
-                if (movieRatingsList != null && !movieRatingsList.isEmpty()) {
+                List<Links> linksList = linksDAO.fetchById(new ArrayList<String>() {{
+                    add("" + ur.getMovieId());
+                }}, null);
+
+                if (movieRatingsList != null && !movieRatingsList.isEmpty() &&
+                        linksList != null &&  !linksList.isEmpty()) {
                     MovieRatings m = movieRatingsList.get(0);
-                    Recommendation r = new Recommendation(ur.getMovieId(), m.getTitle(), m.getGenre(), m.getRating());
+                    Links l = linksList.get(0);
+                    Recommendation r = new Recommendation(ur.getMovieId(), m.getTitle(),
+                            m.getGenre(), m.getRating(), l.getImdbId());
+                    // Get additional movie meta data from moviesapi.com
+                    if (l.getImdbId() > 0) {
+                        //String movieUri = MessageFormat.format(CommonUtils.MOVIES_API_FORAMT, Integer.toString(l.getImdbId()));
+                        //MovieMetadata metadata = RestClientUtil.get(movieUri, MovieMetadata.class);
+                        //r.setMetadata(metadata);
+                    }
                     recommendationList.add(r);
                 }
             }
